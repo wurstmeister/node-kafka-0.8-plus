@@ -1,0 +1,17 @@
+{
+    "name": "node-kafka-0.8-plus",
+    "version": "0.1.0",
+    "author": "Wurstmeister",
+    "description": "NodeJs library for Apache Kafka 0.8 and above",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/wurstmeister/node-kafka-0.8-plus.git"
+    },
+    "dependencies": {
+        "buffermaker": "1.0.0",
+        "buffer-crc32": "0.2.1",
+        "bignum": "0.6.2",
+        "node-int64": "0.3.0",
+        "binary": "0.3.0"
+    }
+}
