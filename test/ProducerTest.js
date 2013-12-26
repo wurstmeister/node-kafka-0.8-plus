@@ -1,8 +1,14 @@
 var Producer = require('../lib/Producer');
-var producer = new Producer({host: 'localhost'}, function () {
+var Optimist = require('optimist');
+
+var argv = Optimist.usage('Usage: $0 --host [host] --port [port]').
+    default('port', 9092).
+    default('host', 'localhost').argv;
+
+console.log("Connecting to: " + argv.host + ":" + argv.port);
+
+var producer = new Producer({host: argv.host, port: argv.port}, function () {
     console.log("connected");
-
-
     var produceRequest = {
         requiredAcks: 1,
         timeout: 12344,
@@ -21,7 +27,7 @@ var producer = new Producer({host: 'localhost'}, function () {
                         partitionId: 0,
                         messages: [
                             {value: "test message without key on partition 0"},
-                            {key: "key", value: "test message with key on partition 0"},
+                            {key: "key", value: "test message with key on partition 0"}
                         ]
                     }
                 ]

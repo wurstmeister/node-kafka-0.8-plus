@@ -12,7 +12,8 @@
         "buffer-crc32": "0.2.1",
         "bignum": "0.6.2",
         "node-int64": "0.3.0",
-        "binary": "0.3.0"
+        "binary": "0.3.0",
+        "optimist" : "0.3.5"
     },
     "scripts": {
         "test": "jasmine-node test/*.spec.js"

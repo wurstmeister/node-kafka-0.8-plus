@@ -1,6 +1,14 @@
 var Consumer = require('../lib/LowLevelConsumer');
+var Optimist = require('optimist');
 
-var consumer = new Consumer({host: 'localhost'}, function () {
+var argv = Optimist.usage('Usage: $0 --host [host] --port [port]').
+    default('port', 9092).
+    default('host', 'localhost').argv;
+
+
+console.log("Connecting to: " + argv.host + ":" + argv.port);
+
+var consumer = new Consumer({host: argv.host, port: argv.port}, function () {
 
     consumer.getTopicMetadata(["node-topic"], function (response) {
         console.log(response);
