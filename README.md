@@ -22,6 +22,7 @@ Environment setup
     - ```start-kafka-shell.sh```
 - From within the shell, create a topic
     - ```$KAFKA_HOME/bin/kafka-topics.sh --create --topic node-topic --partitions 2 --zookeeper $ZK_PORT_2181_TCP_ADDR --replication-factor 1```
+- For more details and troubleshooting see [https://github.com/wurstmeister/kafka-docker](https://github.com/wurstmeister/kafka-docker)
 
 ## Vagrant
 
