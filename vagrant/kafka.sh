@@ -31,8 +31,9 @@ exitscript()
 }
 
 cd /tmp
-archive="kafka_2.8.0-0.8.0.1_KAFKA-1180v2"
-wget http://people.apache.org/~joestein/KAFKA-1180/$archive.tar.gz
+version="0.8.0"
+archive="kafka_2.8.0-$version"
+wget https://archive.apache.org/dist/kafka/$version/$archive.tar.gz
 tar -xvf $archive.tar.gz
 mkdir -p /opt/apache
 

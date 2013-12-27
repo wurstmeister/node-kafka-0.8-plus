@@ -23,3 +23,7 @@ sudo tar xzvf node-v$archive && mv node-v$archiveDir node-$archiveDir #(remove t
 cd node-$archiveDir
 sudo ./configure
 sudo checkinstall 
+cd /vagrant
+sudo npm install
+/vagrant/vagrant/zk.sh
+/vagrant/vagrant/broker.sh 1
