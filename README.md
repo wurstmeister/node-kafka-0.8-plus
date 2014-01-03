@@ -24,9 +24,9 @@ Environment setup
     - ```$KAFKA_HOME/bin/kafka-topics.sh --create --topic node-topic --partitions 2 --zookeeper $ZK_PORT_2181_TCP_ADDR --replication-factor 1```
 - For more details and troubleshooting see [https://github.com/wurstmeister/kafka-docker](https://github.com/wurstmeister/kafka-docker)
 
-## Vagrant
+## Vagrant - [http://www.vagrantup.com/](http://www.vagrantup.com/)
 
-- tbd (Pending pull request)
+- see [https://github.com/wurstmeister/node-kafka-0.8-plus/blob/master/vagrant/README.md](https://github.com/wurstmeister/node-kafka-0.8-plus/blob/master/vagrant/README.md)
 
 Testing
 -------
