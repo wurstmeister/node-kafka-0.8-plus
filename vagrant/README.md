@@ -2,11 +2,11 @@
 
 Using Vagrant to get up and running.
 
-1) Install Vagrant [http://www.vagrantup.com/](http://www.vagrantup.com/)  
-2) Install Virtual Box [https://www.virtualbox.org/](https://www.virtualbox.org/)  
-3) git clone https://github.com/stealthly/node-kafka-0.8-plus
-4) cd node-kafka-0.8-plus
-5) vagrant up
+1. Install Vagrant [http://www.vagrantup.com/](http://www.vagrantup.com/)  
+1. Install Virtual Box [https://www.virtualbox.org/](https://www.virtualbox.org/)  
+1. git clone https://github.com/wurstmeister/node-kafka-0.8-plus
+1. cd node-kafka-0.8-plus
+1. vagrant up
 
 once this is done 
 * Broker 1   :  192.168.40.10
