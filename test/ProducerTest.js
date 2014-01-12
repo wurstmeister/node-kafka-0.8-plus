@@ -1,20 +1,28 @@
 var Producer = require('../lib/Producer');
 var Optimist = require('optimist');
+var bunyan = require('bunyan');
 
-var argv = Optimist.usage('Usage: $0 --host [host] --port [port]').
+var log = bunyan.createLogger({
+    name:"producer-test",
+    level: bunyan["DEBUG"]
+});
+
+
+var argv = Optimist.usage('Usage: $0 --host [host] --port [port] --topic [topic]').
     default('port', 9092).
-    default('host', 'localhost').argv;
+    default('host', 'localhost').
+    default('topic', 'node-topic').argv;
 
-console.log("Connecting to: " + argv.host + ":" + argv.port);
+log.info("Connecting to: " + argv.host + ":" + argv.port);
 
 var producer = new Producer({host: argv.host, port: argv.port}, function () {
-    console.log("connected");
+    log.info("connected");
     var produceRequest = {
         requiredAcks: 1,
         timeout: 12344,
         topics: [
             {
-                topicName: "node-topic",
+                topicName: argv.topic,
                 partitions: [
                     {
                         partitionId: 1,
@@ -36,7 +44,7 @@ var producer = new Producer({host: argv.host, port: argv.port}, function () {
     }
 
     producer.produce(produceRequest, function (response) {
-        console.log(response);
+        log.info(JSON.stringify(response, null, 2));
         producer.close();
     })
 

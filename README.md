@@ -36,8 +36,8 @@ Testing
 1. ```git clone https://github.com/wurstmeister/node-kafka-0.8-plus.git```
 1. ```cd node-kafka-0.8-plus```
 1. ```npm install```
-1. ```node test/LowLevelConsumerTest.js --host=<hostIp> --port=<port>```
-1. ```node test/ProducerTest.js --host=<hostIp> --port=<port>```
+1. ```node test/LowLevelConsumerTest.js --host=<hostIp> --port=<port> | ./node_modules/.bin/bunyan```
+1. ```node test/ProducerTest.js --host=<hostIp> --port=<port> | ./node_modules/.bin/bunyan```
 
 Todo
 ----

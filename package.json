@@ -13,7 +13,8 @@
         "bignum": "0.6.2",
         "node-int64": "0.3.0",
         "binary": "0.3.0",
-        "optimist" : "0.3.5"
+        "optimist" : "0.3.5",
+        "bunyan": "0.22.1"
     },
     "scripts": {
         "test": "jasmine-node test/*.spec.js"

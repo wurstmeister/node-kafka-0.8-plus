@@ -1,22 +1,29 @@
 var Consumer = require('../lib/LowLevelConsumer');
 var Optimist = require('optimist');
+var bunyan = require('bunyan');
 
-var argv = Optimist.usage('Usage: $0 --host [host] --port [port]').
+var log = bunyan.createLogger({
+    name:"low-level-consumer-test",
+    level: bunyan["DEBUG"]
+});
+
+var argv = Optimist.usage('Usage: $0 --host [host] --port [port] --topic [topic]').
     default('port', 9092).
-    default('host', 'localhost').argv;
+    default('host', 'localhost').
+    default('topic', 'node-topic').argv;
 
 
-console.log("Connecting to: " + argv.host + ":" + argv.port);
+log.info("Connecting to: " + argv.host + ":" + argv.port);
 
 var consumer = new Consumer({host: argv.host, port: argv.port}, function () {
 
-    consumer.getTopicMetadata(["node-topic"], function (response) {
-        console.log(response);
+    consumer.getTopicMetadata([argv.topic], function (response) {
+        log.info(JSON.stringify(response, null, 2));
     });
 
     var fetchTopics = [
         {
-            name: "node-topic",
+            name: argv.topic,
             partitions: []
         }
     ]
@@ -41,7 +48,7 @@ var consumer = new Consumer({host: argv.host, port: argv.port}, function () {
         ], function (response) {
 
             var partitionInfo = response.offsets[0].partitions;
-            console.log(partitionInfo)
+            log.info(partitionInfo)
 
             for (var p = 0; p < partitionInfo.length; p++) {
                 var partition = {
@@ -84,8 +91,8 @@ var consumer = new Consumer({host: argv.host, port: argv.port}, function () {
         });
     }
 
-    getMessages("node-topic", function (msg) {
-        console.log("received message: " + msg)
+    getMessages(argv.topic, function (msg) {
+        log.info("received message: " + msg)
     })
 
 });
